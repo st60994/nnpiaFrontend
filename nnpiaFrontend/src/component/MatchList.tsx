@@ -1,39 +1,76 @@
 import {useEffect, useState} from "react";
-import {Team} from "./TeamInfo";
-import MatchCard from "./MatchCard";
+import MatchCard, {Match} from "./MatchCard";
+import axios from "axios";
+import {useSearchParams} from "react-router-dom";
 
-export interface Match {
-    id: number;
-    date: string;
-    homeTeamScore: number;
-    awayTeamScore: number;
-    awayTeam: Team;
-    homeTeam: Team;
-}
-
+const PAGE_SIZE_OPTIONS = [1,10,20];
 const MatchList = () => {
     const [matches, setMatches] = useState<Match[]>([]);
+    const [totalPages, setTotalPages] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [pageSize, setPageSize] = useState(PAGE_SIZE_OPTIONS[0]);
+    const [searchParams,] = useSearchParams();
+
+    const leagueId = searchParams.get('leagueId');
 
     useEffect(() => {
         const fetchMatches = async () => {
             const backendUrl = import.meta.env.VITE_BACKEND_URL;
-            const result = await fetch(`${backendUrl}/matches`);
-            const data = await result.json();
+            let result;
+            if (leagueId != null) {
+                result = await axios.get(
+                    `${backendUrl}/matches?leagueId=${leagueId}&page=${currentPage}&size=${pageSize}`);
+            } else {
+                result = await axios.get(
+                    `${backendUrl}/matches?page=${currentPage}&size=${pageSize}`
+                );
+            }
+            const data = result.data.content;
             await console.log(data);
             setMatches(data);
+            setTotalPages(result.data.totalPages);
         };
 
         fetchMatches();
-    }, []);
+    }, [leagueId, currentPage, pageSize]);
 
+    const handlePageChange = (newPage: number) => {
+        setCurrentPage(newPage);
+    };
     return (
         <div>
             <h1>Matches</h1>
-            <ul>
                 {matches.map((match) => (
-                    <MatchCard key={match.id} match={match}/>
+                    <MatchCard key={match.id} match={match} />
                 ))}
-            </ul>
+            <div>
+                Page {currentPage + 1} of {totalPages}
+                <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 0}
+                >
+                    Prev
+                </button>
+                <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages - 1}
+                >
+                    Next
+                </button>
+                <label>
+                    Page size:
+                    <select
+                        value={pageSize}
+                        onChange={(event) => setPageSize(Number(event.target.value))}
+                    >
+                        {PAGE_SIZE_OPTIONS.map((option) => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+            </div>
         </div>
     );
 };
