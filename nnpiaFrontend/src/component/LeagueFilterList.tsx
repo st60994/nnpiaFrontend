@@ -10,7 +10,14 @@ const LeagueFilterList = () => {
     useEffect(() => {
         const fetchLeagues = async () => {
             const backendUrl = import.meta.env.VITE_BACKEND_URL;
-            const result = await axios.get(`${backendUrl}/leagues`);
+            const jwtToken = localStorage.getItem('token');
+            console.log("jwt :" + `Bearer ${jwtToken}`);
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${jwtToken}`
+                }
+            };
+            const result = await axios.get(`${backendUrl}/leagues`, config);
             const data = result.data;
             await console.log(data);
             setMatches(data);

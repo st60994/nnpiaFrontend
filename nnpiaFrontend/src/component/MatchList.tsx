@@ -3,7 +3,7 @@ import MatchCard, {Match} from "./MatchCard";
 import axios from "axios";
 import {useSearchParams} from "react-router-dom";
 
-const PAGE_SIZE_OPTIONS = [1,10,20];
+const PAGE_SIZE_OPTIONS = [1, 10, 20];
 const MatchList = () => {
     const [matches, setMatches] = useState<Match[]>([]);
     const [totalPages, setTotalPages] = useState(0);
@@ -17,12 +17,19 @@ const MatchList = () => {
         const fetchMatches = async () => {
             const backendUrl = import.meta.env.VITE_BACKEND_URL;
             let result;
+            const jwtToken = localStorage.getItem('token');
+            console.log("jwt :" + `Bearer ${jwtToken}`);
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${jwtToken}`
+                }
+            };
             if (leagueId != null) {
                 result = await axios.get(
-                    `${backendUrl}/matches?leagueId=${leagueId}&page=${currentPage}&size=${pageSize}`);
+                    `${backendUrl}/matches?leagueId=${leagueId}&page=${currentPage}&size=${pageSize}`, config);
             } else {
                 result = await axios.get(
-                    `${backendUrl}/matches?page=${currentPage}&size=${pageSize}`
+                    `${backendUrl}/matches?page=${currentPage}&size=${pageSize}`, config
                 );
             }
             const data = result.data.content;
@@ -40,9 +47,9 @@ const MatchList = () => {
     return (
         <div>
             <h1>Matches</h1>
-                {matches.map((match) => (
-                    <MatchCard key={match.id} match={match} />
-                ))}
+            {matches.map((match) => (
+                <MatchCard key={match.id} match={match}/>
+            ))}
             <div>
                 Page {currentPage + 1} of {totalPages}
                 <button

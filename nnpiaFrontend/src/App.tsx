@@ -5,6 +5,8 @@ import {Provider} from "react-redux";
 import Header from "./component/ui/Header";
 import LoginForm from "./component/LoginForm";
 import SchedulePage from "./component/ui/SchedulePage.tsx";
+import ClubInfo from "./component/ClubInfo";
+import ClubDetailPage from "./component/ui/ClubDetailPage";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +20,7 @@ function App() {
                     <Routes>
                         <Route path={"/authenticate"} element={<LoginForm/>}/>
                         <Route path={"/schedule"} element={<SchedulePage/>}/>
+                        <Route path={"/clubs/:id"} element={<ClubDetailPage/>}></Route>
                     </Routes>
                 </BrowserRouter>
             </Provider>
