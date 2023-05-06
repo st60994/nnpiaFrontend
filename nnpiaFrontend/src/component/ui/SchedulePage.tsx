@@ -1,11 +1,10 @@
-import MatchList from "../MatchList.tsx";
-import LeagueFilterList from "../LeagueFilterList.tsx";
-
+import MatchList from "../matches/MatchList.tsx";
+import LeagueList from "../leagueFilter/LeagueList.tsx";
 const SchedulePage = () => {
     return (
         <>
             <MatchList></MatchList>
-            <LeagueFilterList></LeagueFilterList>
+            <LeagueList title={"League filter"} noFilter={true}></LeagueList>
         </>
     );
 }

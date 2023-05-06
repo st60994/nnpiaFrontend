@@ -17,9 +17,7 @@ function Header() {
             <Toolbar>
                 <Typography variant="h6">
                     <Link to="/schedule">Schedule</Link>
-                    <Link to="/clubs">Clubs</Link>
                     <Link to="/leagues">Leagues</Link>
-                    <Link to="/players">Players</Link>
                 </Typography>
                     <div style={{marginLeft: "auto"}}>
                         {isLoggedIn ? (
