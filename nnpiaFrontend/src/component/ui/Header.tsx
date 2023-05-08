@@ -15,7 +15,7 @@ function Header() {
     return (
         <AppBar position="static">
             <Toolbar>
-                <Typography variant="h6">
+                <Typography variant="h4">
                     <Link to="/schedule">Schedule</Link>
                     <Link to="/leagues">Leagues</Link>
                 </Typography>

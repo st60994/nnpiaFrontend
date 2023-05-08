@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import MatchCard, {Match} from "./MatchCard.tsx";
 import axios from "axios";
 import {useSearchParams} from "react-router-dom";
+import {Typography, ButtonGroup, Button} from "@mui/material";
 
 const PAGE_SIZE_OPTIONS = [1, 10, 20];
 const MatchList = () => {
@@ -46,24 +47,26 @@ const MatchList = () => {
     };
     return (
         <div>
-            <h1>Matches</h1>
+            <Typography variant='h1' gutterBottom>Matches</Typography>
             {matches.map((match) => (
                 <MatchCard key={match.id} match={match}/>
             ))}
             <div>
                 Page {currentPage + 1} of {totalPages}
-                <button
+                <ButtonGroup variant='text' aria-label = 'alignment button group'>
+                <Button
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 0}
                 >
                     Prev
-                </button>
-                <button
+                </Button>
+                <Button
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages - 1}
                 >
                     Next
-                </button>
+                </Button>
+                </ButtonGroup>
                 <label>
                     Page size:
                     <select

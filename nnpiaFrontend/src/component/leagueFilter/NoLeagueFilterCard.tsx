@@ -1,5 +1,5 @@
 import defaultLeagueImage from '../../assets/leagues/undefined.png';
-import {Button} from "@mui/material";
+import {Button, Typography} from "@mui/material";
 import {useSearchParams} from "react-router-dom";
 
 const NoLeagueFilterCard = () => {
@@ -13,7 +13,7 @@ const NoLeagueFilterCard = () => {
     return (
         <Button onClick={handleButtonClick}>
             <img width="60px" height="60px" src={defaultLeagueImage}/>
-            <div> No filter</div>
+            <Typography> No filter</Typography>
         </Button>
 
     );

@@ -1,7 +1,17 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
-import {Avatar, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
+import {
+    Avatar,
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Typography
+} from "@mui/material";
 
 interface Player {
     id: number;
@@ -78,26 +88,40 @@ const ClubPlayerTable = () => {
                 <Table sx={{minWidth: 650}} aria-label="simple table" stickyHeader>
                     <TableHead>
                         <TableRow>
-                            <TableCell align="left" onClick={() => handleSort("name")}>Player
-                                {sorting.column === "name" && (sorting.order === "asc" ? "▲" : "▼")}
+                            <TableCell align="left" onClick={() => handleSort("name")}>
+                                <Typography>Player
+                                    {sorting.column === "name" && (sorting.order === "asc" ? "▲" : "▼")}
+                                </Typography>
                             </TableCell>
-                            <TableCell align="right" onClick={() => handleSort("shirtNumber")}>#
-                                {sorting.column === "shirtNumber" && (sorting.order === "asc" ? "▲" : "▼")}
+                            <TableCell align="right" onClick={() => handleSort("shirtNumber")}>
+                                <Typography>#
+                                    {sorting.column === "shirtNumber" && (sorting.order === "asc" ? "▲" : "▼")}
+                                </Typography>
                             </TableCell>
-                            <TableCell align="right" onClick={() => handleSort("position")}>Position
-                                {sorting.column === "position" && (sorting.order === "asc" ? "▲" : "▼")}
+                            <TableCell align="right" onClick={() => handleSort("position")}>
+                                <Typography>Position
+                                    {sorting.column === "position" && (sorting.order === "asc" ? "▲" : "▼")}
+                                </Typography>
                             </TableCell>
-                            <TableCell align="right" onClick={() => handleSort("age")}>Age
-                                {sorting.column === "age" && (sorting.order === "asc" ? "▲" : "▼")}
+                            <TableCell align="right" onClick={() => handleSort("age")}>
+                                <Typography>Age
+                                    {sorting.column === "age" && (sorting.order === "asc" ? "▲" : "▼")}
+                                </Typography>
                             </TableCell>
-                            <TableCell align="right" onClick={() => handleSort("dateOfBirth")}>Birth date
-                                {sorting.column === "dateOfBirth" && (sorting.order === "asc" ? "▲" : "▼")}
+                            <TableCell align="right" onClick={() => handleSort("dateOfBirth")}>
+                                <Typography>Birth date
+                                    {sorting.column === "dateOfBirth" && (sorting.order === "asc" ? "▲" : "▼")}
+                                </Typography>
                             </TableCell>
-                            <TableCell align="right" onClick={() => handleSort("height")}>Height
-                                {sorting.column === "height" && (sorting.order === "asc" ? "▲" : "▼")}
+                            <TableCell align="right" onClick={() => handleSort("height")}>
+                                <Typography>Height
+                                    {sorting.column === "height" && (sorting.order === "asc" ? "▲" : "▼")}
+                                </Typography>
                             </TableCell>
-                            <TableCell align="right" onClick={() => handleSort("weight")}>Weight
-                                {sorting.column === "weight" && (sorting.order === "asc" ? "▲" : "▼")}
+                            <TableCell align="right" onClick={() => handleSort("weight")}>
+                                <Typography>Weight
+                                    {sorting.column === "weight" && (sorting.order === "asc" ? "▲" : "▼")}
+                                </Typography>
                             </TableCell>
                         </TableRow>
                     </TableHead>
@@ -108,15 +132,28 @@ const ClubPlayerTable = () => {
                                 sx={{'&:last-child td, &:last-child th': {border: 0}}}
                             >
                                 <TableCell component="th" scope="row">
-                                    <Avatar src={`${playerImgLocation}/${row.photoPath}`}></Avatar>{row.name}
+                                    <Avatar src={`${playerImgLocation}/${row.photoPath}`}></Avatar>
+                                    <Typography variant='body2'>{row.name}</Typography>
 
                                 </TableCell>
-                                <TableCell align="right">{row.shirtNumber}</TableCell>
-                                <TableCell align="right">{row.position}</TableCell>
-                                <TableCell align="right">{row.age}</TableCell>
-                                <TableCell align="right">{row.dateOfBirth}</TableCell>
-                                <TableCell align="right">{row.height}</TableCell>
-                                <TableCell align="right">{row.weight}</TableCell>
+                                <TableCell align="right">
+                                    <Typography variant='body2'>{row.shirtNumber}</Typography>
+                                </TableCell>
+                                <TableCell align="right">
+                                    <Typography variant='body2'>{row.position}</Typography>
+                                </TableCell>
+                                <TableCell align="right">
+                                    <Typography variant='body2'>{row.age}</Typography>
+                                </TableCell>
+                                <TableCell align="right">
+                                    <Typography variant='body2'>{row.dateOfBirth}</Typography>
+                                </TableCell>
+                                <TableCell align="right">
+                                    <Typography variant='body2'>{row.height}</Typography>
+                                </TableCell>
+                                <TableCell align="right">
+                                    <Typography variant='body2'>{row.weight}</Typography>
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

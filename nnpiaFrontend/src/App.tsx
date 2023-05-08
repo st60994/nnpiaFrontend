@@ -7,6 +7,7 @@ import LoginForm from "./component/ui/LoginForm.tsx";
 import SchedulePage from "./component/ui/SchedulePage.tsx";
 import ClubDetailPage from "./component/ui/ClubDetailPage";
 import LeaguesPage from "./component/ui/LeaguesPage.tsx";
+import PlayerForm from "./component/player/PlayerForm.tsx";
 
 const queryClient = new QueryClient();
 
@@ -17,10 +18,11 @@ function App() {
                 <BrowserRouter>
                     <Header/>
                     <Routes>
-                        <Route path={"/authenticate"} element={<LoginForm />} />
-                        <Route path={"/schedule"} element={<SchedulePage  />}/>
-                        <Route path={"/clubs/:id"} element={<ClubDetailPage />} />
-                        <Route path={"/leagues"} element={<LeaguesPage />} />
+                        <Route path={"/authenticate"} element={<LoginForm/>}/>
+                        <Route path={"/schedule"} element={<SchedulePage/>}/>
+                        <Route path={"/clubs/:id"} element={<ClubDetailPage/>}/>
+                        <Route path={"/leagues"} element={<LeaguesPage/>}/>
+                        <Route path={"/playerForm"} element={<PlayerForm/>}/>
                     </Routes>
                 </BrowserRouter>
             </Provider>

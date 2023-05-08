@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom';
 import {setLogin} from "../../features/login/loginSlice.ts";
 import store from "../../features/store";
 import axios from "axios";
+import {Button, Typography, TextField} from "@mui/material";
 
 
 interface FormValues {
@@ -44,15 +45,17 @@ const TaskForm = () => {
 
 
     return <>
-        <h1>Sign in</h1>
-        <form onSubmit={handleSubmit(submitHandle)}>
-            <input {...register("username")}/>
-            {errors.username && <p>{errors.username.message}</p>}
-            <input type={"password"} {...register("password")}/>
-            {errors.password && <p>{errors.password.message}</p>}
-            <button type="submit">Sign in</button>
-        </form>
-        {fail && <p>Login not successful! Please check your password and username.</p>}
+        <Typography variant='h1' gutterBottom>Sign in</Typography>
+        <div>
+            <form onSubmit={handleSubmit(submitHandle)}>
+                <TextField label="Username" error={!errors} helperText={errors.username && errors.username.message} required{...register("username")}/>
+
+                <TextField label="Password" error= {!errors} type={"password"} helperText= {errors.password && errors.password.message} required{...register("password") }/>
+
+                <Button type="submit" variant='contained'>Sign in</Button>
+            </form>
+            {fail && <Typography>Login not successful! Please check your password and username.</Typography>}
+        </div>
     </>
 }
 

@@ -1,4 +1,4 @@
-import {Avatar} from "@mui/material";
+import {Avatar, Typography} from "@mui/material";
 
 export interface Country {
     id: number;
@@ -19,7 +19,7 @@ const CountryView = (props: Props) => {
             <div style={{display: 'inline-block', verticalAlign: 'middle'}}>
                 <Avatar src={`${countryImageLocation}/${country?.flagPath}`}></Avatar>
             </div>
-            <p style={{ display: 'inline-block', marginLeft: '10px', verticalAlign: 'middle' }}>{country?.abbreviation}</p>
+            <Typography style={{ display: 'inline-block', marginLeft: '10px', verticalAlign: 'middle' }}>{country?.abbreviation}</Typography>
         </div>
     );
 }

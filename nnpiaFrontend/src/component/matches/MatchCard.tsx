@@ -1,9 +1,11 @@
 import {FC} from "react";
-import {Button} from "@mui/material";
+import {Button, IconButton, Typography} from "@mui/material";
 import defaultClubImage from '../../assets/leagues/undefined.png';
 import {League} from "../leagueFilter/LeagueCard.tsx";
 import {Link} from "react-router-dom";
 import {Club} from "../club/ClubInfo.tsx";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 const clubImgLocation = "/images/clubs/";
 
@@ -40,29 +42,37 @@ const MatchCard: FC<Props> = ({match}) => {
     };
 
     return (
-        <div>
-            {formatDate(match.date)}
-            <Button component={Link} to={`/clubs/${match.homeTeam.id}`}>
-                {match.homeTeam.name}
-                <img
-                    width="60px"
-                    height="60px"
-                    src={homeImagePath ? homeImagePath : defaultClubImage}
-                    alt={match.homeTeam.name}
-                />
-            </Button>
-            {match.homeTeamScore} – {match.awayTeamScore}
-            <Button component={Link} to={`/clubs/${match.awayTeam.id}`}>
-                <img
-                    width="60px"
-                    height="60px"
-                    src={awayImagePath ? awayImagePath : defaultClubImage}
-                    alt={match.awayTeam.name}
-                />
-                {match.awayTeam.name}
-            </Button>
-            {match.league.name}
-        </div>
+        <Typography variant='body2'>
+            <div>
+                {formatDate(match.date)}
+                <Button component={Link} to={`/clubs/${match.homeTeam.id}`}>
+                    <Typography> {match.homeTeam.name}</Typography>
+                    <img
+                        width="60px"
+                        height="60px"
+                        src={homeImagePath ? homeImagePath : defaultClubImage}
+                        alt={match.homeTeam.name}
+                    />
+                </Button>
+                {match.homeTeamScore} – {match.awayTeamScore}
+                <Button component={Link} to={`/clubs/${match.awayTeam.id}`}>
+                    <img
+                        width="60px"
+                        height="60px"
+                        src={awayImagePath ? awayImagePath : defaultClubImage}
+                        alt={match.awayTeam.name}
+                    />
+                    <Typography> {match.awayTeam.name}</Typography>
+                </Button>
+                {match.league.name}
+                <IconButton>
+                    <EditIcon/>
+                </IconButton>
+                <IconButton>
+                    <DeleteIcon/>
+                </IconButton>
+            </div>
+        </Typography>
     );
 };
 

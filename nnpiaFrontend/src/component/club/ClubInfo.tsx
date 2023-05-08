@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Avatar} from "@mui/material";
+import {Avatar, Typography} from "@mui/material";
 import CountryView, {Country} from "../countries/CountryView.tsx";
 
 export interface Club {
@@ -46,18 +46,18 @@ const ClubInfo = () => {
     }
     return (
         <div>
-            <h1>
+            <Typography variant='h2' gutterBottom>
                 Club Info
-            </h1>
+            </Typography>
             <div>
-                <h3>{club?.name}</h3>
-                <p>Nickname: {club?.nickName}</p>
+                <Typography variant='h3' gutterBottom>{club?.name}</Typography>
+                <Typography>Nickname: {club?.nickName}</Typography>
                 <Avatar sx={{width: 120, height: 120}} src={`${clubImgLocation}/${club?.imgPath}`}></Avatar>
                 <CountryView country={club?.clubCountry}></CountryView>
-                <p>City: {club?.location}</p>
-                <p>Coach: {club?.coachName}</p>
-                <p>Founded on: {club?.foundationDate}</p>
-                <p>{club?.description}</p>
+                <Typography>City: {club?.location}</Typography>
+                <Typography>Coach: {club?.coachName}</Typography>
+                <Typography>Founded on: {club?.foundationDate}</Typography>
+                <Typography>{club?.description}</Typography>
             </div>
         </div>
     )

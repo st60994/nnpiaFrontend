@@ -3,13 +3,17 @@ import axios from "axios";
 import LeagueCard, {League} from "../leagueFilter/LeagueCard.tsx";
 import './LeagueList.css';
 import NoLeagueFilterCard from "../leagueFilter/NoLeagueFilterCard.tsx";
+import {Typography} from "@mui/material";
+
+type HandleLeagueSelect = (league: League) => void;
 
 interface LeagueListProps {
     title: string;
     noFilter: boolean;
+    handleLeagueSelect?: HandleLeagueSelect;
 }
 
-const LeagueList = ({title, noFilter}: LeagueListProps) => {
+const LeagueList = ({title, noFilter, handleLeagueSelect}: LeagueListProps) => {
     const [leagues, setLeagues] = useState<League[]>([]);
 
 
@@ -27,6 +31,9 @@ const LeagueList = ({title, noFilter}: LeagueListProps) => {
             const data = result.data;
             await console.log(data);
             setLeagues(data);
+            if (handleLeagueSelect) {
+                handleLeagueSelect(data[0]);
+            }
         };
 
         fetchLeagues();
@@ -34,10 +41,10 @@ const LeagueList = ({title, noFilter}: LeagueListProps) => {
 
     return (
         <div className={"league-filter-list"}>
-            <h1>{title}</h1>
+            <Typography variant='h2'>{title}</Typography>
             {noFilter ? <NoLeagueFilterCard/> : null}
             {leagues.map((league) => (
-                <LeagueCard key={league.id} league={league}/>
+                <LeagueCard key={league.id} league={league} onSelect={()=> handleLeagueSelect ? handleLeagueSelect(league) : null}/>
             ))}
         </div>
     );
