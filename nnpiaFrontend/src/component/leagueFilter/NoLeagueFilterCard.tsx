@@ -11,7 +11,12 @@ const NoLeagueFilterCard = () => {
     }
 
     return (
-        <Button onClick={handleButtonClick}>
+        <Button onClick={handleButtonClick} sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            textAlign: 'left',
+        }}>
             <img width="60px" height="60px" src={defaultLeagueImage}/>
             <Typography> No filter</Typography>
         </Button>

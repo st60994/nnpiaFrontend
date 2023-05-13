@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Avatar, Typography} from "@mui/material";
+import {Avatar, Card, Typography} from "@mui/material";
 import CountryView, {Country} from "../countries/CountryView.tsx";
 
 export interface Club {
@@ -45,7 +45,7 @@ const ClubInfo = () => {
         return <div>Loading data...</div>
     }
     return (
-        <div>
+        <Card sx={{padding: '32px'}}>
             <Typography variant='h2' gutterBottom>
                 Club Info
             </Typography>
@@ -59,7 +59,7 @@ const ClubInfo = () => {
                 <Typography>Founded on: {club?.foundationDate}</Typography>
                 <Typography>{club?.description}</Typography>
             </div>
-        </div>
+        </Card>
     )
 }
 

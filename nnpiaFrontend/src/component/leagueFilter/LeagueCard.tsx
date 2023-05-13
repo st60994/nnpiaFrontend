@@ -28,7 +28,7 @@ const LeagueCard = ({league, onSelect}: Props) => {
     const path = `${leagueImgLocation}${league.imgPath}`;
     console.log(league.name);
     return (
-        <Button onClick={handleButtonClick}>
+        <Button onClick={handleButtonClick}  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
             <img width="60px" height="60px" src={path ? path : defaultLeagueImage} alt={league.name}/>
             <Typography> {league.name}</Typography>
         </Button>

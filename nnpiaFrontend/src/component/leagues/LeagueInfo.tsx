@@ -1,15 +1,15 @@
 import {League} from "../leagueFilter/LeagueCard.tsx";
-import {Typography} from "@mui/material";
+import {Grid, Typography} from "@mui/material";
 
 interface LeagueInfoProps {
     league: League | null;
 }
 
 const LeagueInfo = (leagueProps: LeagueInfoProps) => {
-    return <div>
+    return <Grid item xs={9} sm={9}>
         <Typography variant='h2' gutterBottom>{leagueProps.league ? leagueProps.league.name : ""}</Typography>
         <Typography>Founded on: {leagueProps.league ? leagueProps.league.foundationDate : ""}</Typography>
-    </div>
+    </Grid>
 }
 
 export default LeagueInfo;

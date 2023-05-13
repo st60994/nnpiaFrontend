@@ -3,7 +3,7 @@ import axios from "axios";
 import {Club} from "../club/ClubInfo.tsx";
 import ClubCard from "../club/ClubCard.tsx";
 import {useSearchParams} from "react-router-dom";
-import {Typography} from "@mui/material";
+import {Grid, Typography} from "@mui/material";
 
 const LeaguesClubs = () => {
     const [clubs, setClubs] = useState<Club[]>([]);
@@ -38,12 +38,12 @@ const LeaguesClubs = () => {
     }, [leagueId]);
 
     return (
-        <div>
+        <Grid item xs={12}>
             <Typography variant='h3' gutterBottom>Clubs</Typography>
             {clubs.map((club) => (
                 <ClubCard key={club.id} club={club} />
             ))}
-        </div>
+        </Grid>
     );
 }
 

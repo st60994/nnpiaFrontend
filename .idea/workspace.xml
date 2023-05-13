@@ -4,27 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e630692a-090b-4db2-83cb-487acf4471b4" name="Changes" comment="ADD: finish club page">
-      <change afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/club/ClubCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagues/LeaguesClubs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/player/PlayerForm.tsx" afterDir="false" />
+    <list default="true" id="e630692a-090b-4db2-83cb-487acf4471b4" name="Changes" comment="ADD: added form and mui elements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/club/ClubCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/club/ClubCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/club/ClubInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/club/ClubInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/club/ClubPlayerTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/club/ClubPlayerTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/countries/CountryView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/countries/CountryView.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/LeagueCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/LeagueCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/LeagueList.css" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/LeagueList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/LeagueList.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/LeagueList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/LeagueList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/NoLeagueFilterCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/NoLeagueFilterCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagues/LeagueInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagues/LeagueInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagues/LeaguesClubs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagues/LeaguesClubs.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/matches/MatchCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/matches/MatchCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/matches/MatchList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/matches/MatchList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/Header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/LeaguesPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/LeaguesPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/SchedulePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/SchedulePage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +29,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
-        <option value="CSS File" />
         <option value="TypeScript JSX File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -127,8 +121,19 @@
       <workItem from="1683447002080" duration="5743000" />
       <workItem from="1683474738936" duration="4434000" />
       <workItem from="1683540500092" duration="4543000" />
+      <workItem from="1683578636467" duration="67000" />
+      <workItem from="1683919484107" duration="452000" />
+      <workItem from="1683919959415" duration="1891000" />
+      <workItem from="1683963464677" duration="5197000" />
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ADD: added form and mui elements">
+      <created>1683578696740</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683578696740</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +152,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="ADD: added form and mui elements" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD: added form and mui elements" />
   </component>
 </project>

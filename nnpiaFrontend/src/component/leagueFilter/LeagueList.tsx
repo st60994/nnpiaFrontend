@@ -1,9 +1,8 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import LeagueCard, {League} from "../leagueFilter/LeagueCard.tsx";
-import './LeagueList.css';
 import NoLeagueFilterCard from "../leagueFilter/NoLeagueFilterCard.tsx";
-import {Typography} from "@mui/material";
+import {Grid, Typography, Stack, Card} from "@mui/material";
 
 type HandleLeagueSelect = (league: League) => void;
 
@@ -40,13 +39,18 @@ const LeagueList = ({title, noFilter, handleLeagueSelect}: LeagueListProps) => {
     }, []);
 
     return (
-        <div className={"league-filter-list"}>
-            <Typography variant='h2'>{title}</Typography>
-            {noFilter ? <NoLeagueFilterCard/> : null}
-            {leagues.map((league) => (
-                <LeagueCard key={league.id} league={league} onSelect={()=> handleLeagueSelect ? handleLeagueSelect(league) : null}/>
-            ))}
-        </div>
+        <Grid item xs={12} sm={3} className={"league-filter-list"}>
+            <Card sx={{height:'100vh'}}>
+                <Stack>
+                    <Typography variant='h2'>{title}</Typography>
+                    {noFilter ? <NoLeagueFilterCard/> : null}
+                    {leagues.map((league) => (
+                        <LeagueCard key={league.id} league={league}
+                                    onSelect={() => handleLeagueSelect ? handleLeagueSelect(league) : null}/>
+                    ))}
+                </Stack>
+            </Card>
+        </Grid>
     );
 }
 

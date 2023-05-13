@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import MatchCard, {Match} from "./MatchCard.tsx";
 import axios from "axios";
 import {useSearchParams} from "react-router-dom";
-import {Typography, ButtonGroup, Button} from "@mui/material";
+import {Typography, ButtonGroup, Button, Grid} from "@mui/material";
 
 const PAGE_SIZE_OPTIONS = [1, 10, 20];
 const MatchList = () => {
@@ -46,7 +46,7 @@ const MatchList = () => {
         setCurrentPage(newPage);
     };
     return (
-        <div>
+        <Grid item xs={12} sm={9}>
             <Typography variant='h1' gutterBottom>Matches</Typography>
             {matches.map((match) => (
                 <MatchCard key={match.id} match={match}/>
@@ -81,7 +81,7 @@ const MatchList = () => {
                     </select>
                 </label>
             </div>
-        </div>
+        </Grid>
     );
 };
 
