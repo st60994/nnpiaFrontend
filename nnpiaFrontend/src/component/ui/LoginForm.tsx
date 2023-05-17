@@ -36,7 +36,7 @@ const TaskForm = () => {
             localStorage.setItem('token', jwt);
             console.log('Token saved in local storage:', jwt);
             store.dispatch(setLogin(jwt));
-            navigate('/');
+            navigate('/schedule');
         } catch (error) {
             console.error('Failed to authenticate:', error);
             setFail(true);

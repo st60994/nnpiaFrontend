@@ -4,21 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e630692a-090b-4db2-83cb-487acf4471b4" name="Changes" comment="ADD: added form and mui elements">
+    <list default="true" id="e630692a-090b-4db2-83cb-487acf4471b4" name="Changes" comment="ADD: club info page">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/club/ClubCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/club/ClubCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/club/ClubInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/club/ClubInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/LeagueCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/LeagueCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/LeagueList.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/LeagueList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/LeagueList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/NoLeagueFilterCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagueFilter/NoLeagueFilterCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagues/LeagueInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagues/LeagueInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagues/LeaguesClubs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/leagues/LeaguesClubs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/matches/MatchCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/matches/MatchCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/matches/MatchList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/matches/MatchList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/LeaguesPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/LeaguesPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/SchedulePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/SchedulePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nnpiaFrontend/src/component/ui/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +52,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\hruby\\IdeaProjects\\nnpiaFrontend\\nnpiaFrontend\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\hruby\\Desktop\\Nová složka\\github_projects\\nnpiaFrontend\\nnpiaFrontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -125,6 +117,8 @@
       <workItem from="1683919484107" duration="452000" />
       <workItem from="1683919959415" duration="1891000" />
       <workItem from="1683963464677" duration="5197000" />
+      <workItem from="1684324608896" duration="2311000" />
+      <workItem from="1684328892936" duration="1966000" />
     </task>
     <task id="LOCAL-00002" summary="ADD: added form and mui elements">
       <created>1683578696740</created>

@@ -4,13 +4,16 @@ import {useSelector} from "react-redux";
 import store, {RootState} from "../../features/store";
 import {setLogin} from "../../features/login/loginSlice.ts";
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
+import {useNavigate} from 'react-router-dom';
 import './Header.css';
 
 function Header() {
     const isLoggedIn = useSelector((state: RootState) => state.login.value);
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         store.dispatch(setLogin(null));
+        navigate("/");
     }
 
     return (
