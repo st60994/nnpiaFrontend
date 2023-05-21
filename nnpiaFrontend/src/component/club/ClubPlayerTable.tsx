@@ -1,17 +1,21 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {
     Avatar,
-    Paper,
+    Paper, Stack,
     Table,
     TableBody,
     TableCell,
     TableContainer,
     TableHead,
     TableRow,
-    Typography
+    Typography,
+    IconButton,
+    Box
 } from "@mui/material";
+import {convertDateFormat} from "../../convertDateFormat.ts";
+import AddIcon from '@mui/icons-material/Add';
 
 interface Player {
     id: number;
@@ -82,84 +86,99 @@ const ClubPlayerTable = () => {
     });
 
     return (
-        <div>
-            <h1>Team lineup</h1>
+        <Paper>
+            <Typography variant="h4" align="center" gutterBottom>
+                Team Lineup
+            </Typography>
             <TableContainer component={Paper}>
-                <Table sx={{minWidth: 650}} aria-label="simple table" stickyHeader>
+                <Table sx={{minWidth: 650, padding: '16px'}} aria-label="simple table" stickyHeader>
                     <TableHead>
                         <TableRow>
                             <TableCell align="left" onClick={() => handleSort("name")}>
-                                <Typography>Player
-                                    {sorting.column === "name" && (sorting.order === "asc" ? "▲" : "▼")}
+                                <Typography variant="subtitle1">
+                                    Player
+                                    {sorting.column === "name" && (sorting.order === "asc" ? " ▲" : " ▼")}
                                 </Typography>
                             </TableCell>
                             <TableCell align="right" onClick={() => handleSort("shirtNumber")}>
-                                <Typography>#
-                                    {sorting.column === "shirtNumber" && (sorting.order === "asc" ? "▲" : "▼")}
+                                <Typography variant="subtitle1">
+                                    #
+                                    {sorting.column === "shirtNumber" && (sorting.order === "asc" ? " ▲" : " ▼")}
                                 </Typography>
                             </TableCell>
                             <TableCell align="right" onClick={() => handleSort("position")}>
-                                <Typography>Position
-                                    {sorting.column === "position" && (sorting.order === "asc" ? "▲" : "▼")}
+                                <Typography variant="subtitle1">
+                                    Position
+                                    {sorting.column === "position" && (sorting.order === "asc" ? " ▲" : " ▼")}
                                 </Typography>
                             </TableCell>
                             <TableCell align="right" onClick={() => handleSort("age")}>
-                                <Typography>Age
-                                    {sorting.column === "age" && (sorting.order === "asc" ? "▲" : "▼")}
+                                <Typography variant="subtitle1">
+                                    Age
+                                    {sorting.column === "age" && (sorting.order === "asc" ? " ▲" : " ▼")}
                                 </Typography>
                             </TableCell>
                             <TableCell align="right" onClick={() => handleSort("dateOfBirth")}>
-                                <Typography>Birth date
-                                    {sorting.column === "dateOfBirth" && (sorting.order === "asc" ? "▲" : "▼")}
+                                <Typography variant="subtitle1">
+                                    Birth Date
+                                    {sorting.column === "dateOfBirth" && (sorting.order === "asc" ? " ▲" : " ▼")}
                                 </Typography>
                             </TableCell>
                             <TableCell align="right" onClick={() => handleSort("height")}>
-                                <Typography>Height
-                                    {sorting.column === "height" && (sorting.order === "asc" ? "▲" : "▼")}
+                                <Typography variant="subtitle1">
+                                    Height (cm)
+                                    {sorting.column === "height" && (sorting.order === "asc" ? " ▲" : " ▼")}
                                 </Typography>
                             </TableCell>
                             <TableCell align="right" onClick={() => handleSort("weight")}>
-                                <Typography>Weight
-                                    {sorting.column === "weight" && (sorting.order === "asc" ? "▲" : "▼")}
+                                <Typography variant="subtitle1">
+                                    Weight (kg)
+                                    {sorting.column === "weight" && (sorting.order === "asc" ? " ▲" : " ▼")}
                                 </Typography>
                             </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {sortedPlayers.map((row) => (
-                            <TableRow
-                                key={row.name}
-                                sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                            >
-                                <TableCell component="th" scope="row">
-                                    <Avatar src={`${playerImgLocation}/${row.photoPath}`}></Avatar>
-                                    <Typography variant='body2'>{row.name}</Typography>
-
+                            <TableRow key={row.name} sx={{'&:last-child td, &:last-child th': {border: 0}}}>
+                                <TableCell scope="row">
+                                    <Stack direction="row" alignItems="center" spacing={2}>
+                                        <Avatar sx={{width: 60, height: 60}}
+                                                src={`${playerImgLocation}/${row.photoPath}`}/>
+                                        <Typography variant="body2">{row.name}</Typography>
+                                    </Stack>
                                 </TableCell>
                                 <TableCell align="right">
-                                    <Typography variant='body2'>{row.shirtNumber}</Typography>
+                                    <Typography variant="body2">{row.shirtNumber}</Typography>
                                 </TableCell>
                                 <TableCell align="right">
-                                    <Typography variant='body2'>{row.position}</Typography>
+                                    <Typography variant="body2">{row.position}</Typography>
                                 </TableCell>
                                 <TableCell align="right">
-                                    <Typography variant='body2'>{row.age}</Typography>
+                                    <Typography variant="body2">{row.age}</Typography>
                                 </TableCell>
                                 <TableCell align="right">
-                                    <Typography variant='body2'>{row.dateOfBirth}</Typography>
+                                    <Typography variant="body2">{convertDateFormat(row.dateOfBirth)}</Typography>
                                 </TableCell>
                                 <TableCell align="right">
-                                    <Typography variant='body2'>{row.height}</Typography>
+                                    <Typography variant="body2">{row.height}</Typography>
                                 </TableCell>
                                 <TableCell align="right">
-                                    <Typography variant='body2'>{row.weight}</Typography>
+                                    <Typography variant="body2">{row.weight}</Typography>
                                 </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer>
-        </div>
+            <Box sx={{display: 'flex', justifyContent: 'flex-end', mt: 2, alignItems: "center"}}>
+                <IconButton component={Link} to={`/playerForm/${id}`}>
+                    <Typography>Add new player</Typography>
+                    <AddIcon></AddIcon>
+                </IconButton>
+            </Box>
+        </Paper>
+
     );
 }
 

@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import MatchCard, {Match} from "./MatchCard.tsx";
 import axios from "axios";
 import {useSearchParams} from "react-router-dom";
-import {Typography, ButtonGroup, Button, Grid} from "@mui/material";
+import {Typography, ButtonGroup, Button, Grid, Stack, MenuItem, TextField} from "@mui/material";
 
 const PAGE_SIZE_OPTIONS = [1, 10, 20];
 const MatchList = () => {
@@ -47,41 +47,48 @@ const MatchList = () => {
     };
     return (
         <Grid item xs={12} sm={9}>
-            <Typography variant='h1' gutterBottom>Matches</Typography>
+            <Typography sx={{padding: '1rem'}} variant='h3' gutterBottom>Matches</Typography>
             {matches.map((match) => (
                 <MatchCard key={match.id} match={match}/>
             ))}
-            <div>
-                Page {currentPage + 1} of {totalPages}
-                <ButtonGroup variant='text' aria-label = 'alignment button group'>
-                <Button
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={currentPage === 0}
-                >
-                    Prev
-                </Button>
-                <Button
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={currentPage === totalPages - 1}
-                >
-                    Next
-                </Button>
-                </ButtonGroup>
-                <label>
-                    Page size:
-                    <select
-                        value={pageSize}
-                        onChange={(event) => setPageSize(Number(event.target.value))}
+            <Stack direction="row" display="flex" alignItems="center" justifyContent="center">
+                <Typography sx={{padding: '2rem'}}>
+                    Page {currentPage + 1} of {totalPages}
+                </Typography>
+                <ButtonGroup variant='text' aria-label='alignment button group' sx={{mr: '1rem'}}>
+                    <Button
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 0}
                     >
-                        {PAGE_SIZE_OPTIONS.map((option) => (
-                            <option key={option} value={option}>
-                                {option}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-            </div>
+                        Prev
+                    </Button>
+                    <Button
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages - 1}
+                    >
+                        Next
+                    </Button>
+                </ButtonGroup>
+                <Typography sx={{mr: '0.5rem'}}>
+                    Page size:
+                </Typography>
+                <TextField
+                    select
+                    size="small"
+                    value={pageSize}
+                    onChange={(event) => setPageSize(Number(event.target.value))}
+                    sx={{ml: '0.5rem'}}
+                >
+                    {PAGE_SIZE_OPTIONS.map((option) => (
+                        <MenuItem key={option} value={option}>
+                            {option}
+                        </MenuItem>
+                    ))}
+                </TextField>
+
+            </Stack>
         </Grid>
+
     );
 };
 

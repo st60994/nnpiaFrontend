@@ -16,6 +16,7 @@ const NoLeagueFilterCard = () => {
             alignItems: 'center',
             justifyContent: 'flex-start',
             textAlign: 'left',
+            gap: "1rem"
         }}>
             <img width="60px" height="60px" src={defaultLeagueImage}/>
             <Typography> No filter</Typography>

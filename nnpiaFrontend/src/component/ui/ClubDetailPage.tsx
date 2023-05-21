@@ -1,12 +1,13 @@
 import ClubInfo from "../club/ClubInfo.tsx";
 import ClubPlayerTable from "../club/ClubPlayerTable.tsx";
+import {Paper} from "@mui/material";
 
 const ClubDetailPage = () => {
     return (
-        <div>
+        <Paper>
             <ClubInfo/>
             <ClubPlayerTable/>
-        </div>
+        </Paper>
     );
 }
 

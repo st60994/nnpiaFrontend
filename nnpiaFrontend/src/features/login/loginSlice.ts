@@ -19,6 +19,7 @@ export const loginSlice = createSlice({
             if (action.payload === null) {
                 state.value = false;
                 localStorage.removeItem('token');
+                localStorage.removeItem("role");
             } else {
                 state.value = true;
                 state.jwt = action.payload;

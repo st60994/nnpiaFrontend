@@ -40,10 +40,10 @@ const LeagueList = ({title, noFilter, handleLeagueSelect}: LeagueListProps) => {
 
     return (
         <Grid item xs={12} sm={3} className={"league-filter-list"}>
-            <Card sx={{height:'100vh'}}>
-                <Stack>
-                    <Typography variant='h2'>{title}</Typography>
-                    {noFilter ? <NoLeagueFilterCard/> : null}
+            <Card sx={{height: '100vh', p: '1rem', display: 'flex', flexDirection: 'column'}}>
+                <Typography variant='h5' sx={{mb: '1rem'}}>{title}</Typography>
+                {noFilter && <NoLeagueFilterCard/>}
+                <Stack sx={{flexGrow: 1, overflowY: 'auto'}}>
                     {leagues.map((league) => (
                         <LeagueCard key={league.id} league={league}
                                     onSelect={() => handleLeagueSelect ? handleLeagueSelect(league) : null}/>

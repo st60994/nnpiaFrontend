@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {Button, Card, CardContent, IconButton, Typography} from "@mui/material";
+import {Button, Card, CardContent, IconButton, Stack, Typography} from "@mui/material";
 import defaultClubImage from '../../assets/leagues/undefined.png';
 import {League} from "../leagueFilter/LeagueCard.tsx";
 import {Link} from "react-router-dom";
@@ -26,15 +26,11 @@ interface Props {
 const MatchCard: FC<Props> = ({match}) => {
     const homeImagePath = `${clubImgLocation}${match.homeTeam.imgPath}`;
     const awayImagePath = `${clubImgLocation}${match.awayTeam.imgPath}`;
+    const role = localStorage.getItem("role");
 
     const formatDate = (inputDateString: string): string => {
         const date = new Date(inputDateString);
-        return `${date.getDate()} ${getMonthName(date.getMonth())} ${date.getFullYear()} ${padZero(date.getHours())}:${padZero(date.getMinutes())}`;
-    };
-
-    const getMonthName = (month: number): string => {
-        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        return monthNames[month];
+        return `${date.getDate()}.${date.getMonth()}. ${date.getFullYear()} ${padZero(date.getHours())}:${padZero(date.getMinutes())}`;
     };
 
     const padZero = (n: number): string => {
@@ -42,39 +38,80 @@ const MatchCard: FC<Props> = ({match}) => {
     };
 
     return (
-        <Typography variant='body2'>
-            <Card>
-                <CardContent>
-                    {formatDate(match.date)}
-                    <Button component={Link} to={`/clubs/${match.homeTeam.id}`}>
-                        <Typography> {match.homeTeam.name}</Typography>
-                        <img
-                            width="60px"
-                            height="60px"
-                            src={homeImagePath ? homeImagePath : defaultClubImage}
-                            alt={match.homeTeam.name}
-                        />
-                    </Button>
-                    {match.homeTeamScore} – {match.awayTeamScore}
-                    <Button component={Link} to={`/clubs/${match.awayTeam.id}`}>
-                        <img
-                            width="60px"
-                            height="60px"
-                            src={awayImagePath ? awayImagePath : defaultClubImage}
-                            alt={match.awayTeam.name}
-                        />
-                        <Typography> {match.awayTeam.name}</Typography>
-                    </Button>
-                    {match.league.name}
-                    <IconButton>
-                        <EditIcon/>
-                    </IconButton>
-                    <IconButton>
-                        <DeleteIcon/>
-                    </IconButton>
-                </CardContent>
-            </Card>
-        </Typography>
+        <Card sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            position: 'relative',
+            width: 'calc(((100% - 442px) / 12) * 12 + 374px)',
+            height: '100px',
+            margin: '0 34px',
+            marginBottom: '0.1rem',
+            padding: "1rem"
+        }}>
+            <Typography>{formatDate(match.date)}</Typography>
+            <CardContent sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center", // Add this line to center the stack
+                padding: "1rem",
+                width: 'calc(((100% - 442px) / 12) * 12 + 374px)',
+            }}>
+                <Stack direction="row" sx={{alignItems: "center"}}>
+                    <Stack direction="row" sx={{display: "flex", alignItems: "center", gap: "1rem", padding: "1rem"}}>
+                        <Button
+                            component={Link}
+                            to={`/clubs/${match.homeTeam.id}`}
+                            sx={{
+                                display: "flex",
+                                gap: "0.5rem"
+                            }}
+                        >
+                            <Typography variant="body1">{match.homeTeam.name}</Typography>
+                            <img
+                                src={homeImagePath ? homeImagePath : defaultClubImage}
+                                alt={match.homeTeam.name}
+                                width="60px"
+                                height="60px"
+                            />
+                        </Button>
+                        <Typography variant="body1" sx={{alignSelf: 'center'}}>
+                            {match.homeTeamScore} – {match.awayTeamScore}
+                        </Typography>
+                        <Button
+                            component={Link}
+                            to={`/clubs/${match.awayTeam.id}`}
+                            sx={{
+                                display: "flex",
+                                gap: "0.5rem",
+                            }}
+                        >
+                            <img
+                                src={awayImagePath ? awayImagePath : defaultClubImage}
+                                alt={match.awayTeam.name}
+                                width="60px"
+                                height="60px"
+                            />
+                            <Typography variant="body1">{match.awayTeam.name}</Typography>
+                        </Button>
+                    </Stack>
+
+                </Stack>
+            </CardContent>
+            <Stack direction="row" sx={{ml: "auto", alignItems: "center"}}>
+                <Typography variant="body1">{match.league.name}</Typography>
+                {role === 'ADMINISTRATOR' ? (
+                    <>
+                        <IconButton>
+                            <EditIcon/>
+                        </IconButton>
+                        <IconButton>
+                            <DeleteIcon/>
+                        </IconButton>
+                    </>
+                ) : null}
+            </Stack>
+        </Card>
     );
 };
 
