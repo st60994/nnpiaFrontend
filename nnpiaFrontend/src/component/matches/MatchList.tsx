@@ -14,6 +14,10 @@ const MatchList = () => {
 
     const leagueId = searchParams.get('leagueId');
 
+    const handleMatchDelete = (deletedMatchId: number) => {
+        setMatches(matches.filter(match => match.id !== deletedMatchId));
+    };
+
     useEffect(() => {
         const fetchMatches = async () => {
             const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -49,7 +53,7 @@ const MatchList = () => {
         <Grid item xs={12} sm={9}>
             <Typography sx={{padding: '1rem'}} variant='h3' gutterBottom>Matches</Typography>
             {matches.map((match) => (
-                <MatchCard key={match.id} match={match}/>
+                <MatchCard key={match.id} match={match} onDelete={handleMatchDelete}/>
             ))}
             <Stack direction="row" display="flex" alignItems="center" justifyContent="center">
                 <Typography sx={{padding: '2rem'}}>

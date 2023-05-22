@@ -23,7 +23,7 @@ interface FormValues {
 const PlayerForm = () => {
     const {id} = useParams<{ id: string }>();
     console.log("ID", id);
-    const paperStyle = {padding: 20, width: 280, height: '70vh', margin: "20px auto"};
+    const paperStyle = {padding: 20, width: 280, height: '80vh', margin: "20px auto"};
     useEffect(() => {
         const fetchCountries = async () => {
             const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -168,7 +168,7 @@ const PlayerForm = () => {
                     ))}
                 </TextField>
             </Stack>
-            <Button type="submit" variant='contained' fullWidth>OK</Button>
+            <Button sx={{ marginTop: '16px' }} type="submit" variant='contained' fullWidth>OK</Button>
         </form>
     </Paper>
 

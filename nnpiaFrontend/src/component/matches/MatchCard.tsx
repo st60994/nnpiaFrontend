@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import {Club} from "../club/ClubInfo.tsx";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import axios from "axios";
 
 const clubImgLocation = "/images/clubs/";
 
@@ -21,9 +22,10 @@ export interface Match {
 
 interface Props {
     match: Match;
+    onDelete: (deletedMatchId: number) => void;
 }
 
-const MatchCard: FC<Props> = ({match}) => {
+const MatchCard: FC<Props> = ({match, onDelete}) => {
     const homeImagePath = `${clubImgLocation}${match.homeTeam.imgPath}`;
     const awayImagePath = `${clubImgLocation}${match.awayTeam.imgPath}`;
     const role = localStorage.getItem("role");
@@ -36,6 +38,18 @@ const MatchCard: FC<Props> = ({match}) => {
     const padZero = (n: number): string => {
         return n < 10 ? `0${n}` : n.toString();
     };
+
+    const handleDelete = async () => {
+        const jwtToken = localStorage.getItem('token');
+        const backendUrl = import.meta.env.VITE_BACKEND_URL;
+        const config = {
+            headers: {
+                Authorization: `Bearer ${jwtToken}`
+            }
+        };
+        await axios.delete(`${backendUrl}/matches/${match.id}`, config);
+        onDelete(match.id);
+    }
 
     return (
         <Card sx={{
@@ -105,7 +119,7 @@ const MatchCard: FC<Props> = ({match}) => {
                         <IconButton>
                             <EditIcon/>
                         </IconButton>
-                        <IconButton>
+                        <IconButton onClick={handleDelete}>
                             <DeleteIcon/>
                         </IconButton>
                     </>

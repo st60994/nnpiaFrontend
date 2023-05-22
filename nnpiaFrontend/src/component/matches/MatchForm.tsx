@@ -91,19 +91,31 @@ const MatchForm = () => {
                 Authorization: `Bearer ${jwtToken}`
             }
         };
-
-
-        await axios.post(`${backendUrl}/players`
-            , {
-                date: selectedDate,
-                awayTeamScore: data.awayTeamScore,
-                awayTeamId: awayTeam,
-                homeTeamScore: data.homeTeamScore,
-                homeTeamId: homeTeam,
-                leagueId: league
-            }, config).catch(function (error) {
-            console.log(error);
-        });
+        if (id === null) {
+            await axios.post(`${backendUrl}/matches`
+                , {
+                    date: selectedDate,
+                    awayTeamScore: data.awayTeamScore,
+                    awayTeamId: awayTeam,
+                    homeTeamScore: data.homeTeamScore,
+                    homeTeamId: homeTeam,
+                    leagueId: league
+                }, config).catch(function (error) {
+                console.log(error);
+            });
+        } else {
+            await axios.put(`${backendUrl}/matches/${id}`
+                , {
+                    date: selectedDate,
+                    awayTeamScore: data.awayTeamScore,
+                    awayTeamId: awayTeam,
+                    homeTeamScore: data.homeTeamScore,
+                    homeTeamId: homeTeam,
+                    leagueId: league
+                }, config).catch(function (error) {
+                console.log(error);
+            });
+        }
         console.table(data);
     }
     const handleAwayTeamChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -142,7 +154,7 @@ const MatchForm = () => {
                 </TextField>
                 <TextField
                     label='Home team score'
-                    value={homeTeam || (fetchedMatch ? fetchedMatch.homeTeamScore : '')}
+                    value={(fetchedMatch ? fetchedMatch.homeTeamScore : undefined)}
                     helperText={errors.homeTeamScore && errors.homeTeamScore.message}
                     required{...register("homeTeamScore")}
                 >
@@ -163,7 +175,7 @@ const MatchForm = () => {
                 </TextField>
                 <TextField
                     label='Away team score'
-                    value={homeTeam || (fetchedMatch ? fetchedMatch.awayTeamScore : '')}
+                    value={fetchedMatch ? fetchedMatch.awayTeamScore : undefined}
                     helperText={errors.awayTeamScore && errors.awayTeamScore.message}
                     required{...register("awayTeamScore")}
                 >
@@ -183,7 +195,7 @@ const MatchForm = () => {
                     ))}
                 </TextField>
             </Stack>
-            <Button type="submit" variant='contained' fullWidth>OK</Button>
+            <Button sx={{ marginTop: '16px' }} type="submit" variant='contained' fullWidth>OK</Button>
         </form>
     </Paper>
 

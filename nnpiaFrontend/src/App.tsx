@@ -50,7 +50,7 @@ function App() {
                 </QueryClientProvider>
             </ThemeProvider>
         </LocalizationProvider>
-    )
+    );
 }
 
 export default App
